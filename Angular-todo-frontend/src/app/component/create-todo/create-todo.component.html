@@ -1,0 +1,44 @@
+<div>
+  <div class="flex flex-col items-center justify-center gap-1 md:w-[500px] mt-4">
+    <div class="font-bold text-4xl md:text-5xl lg:text-6xl mb-4">📝</div>
+    <div class="">
+      <mat-label class="text-base font-medium">Todo Title</mat-label>
+      <br/>
+      <mat-form-field appearance="outline" class="w-[350px]">
+        <mat-label>🤔 What to do Today ?</mat-label>
+        <input
+          [formControl]="title"
+          matInput
+          placeholder="🤔 What to do Today ?"
+        />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-label class="text-base font-medium">Task's</mat-label>
+      <br/>
+      <mat-form-field class="w-[350px]" appearance="outline">
+        <mat-label class="text-red-500">Tasks list</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let task of tasks" (removed)="remove(task)">
+            {{ task }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Add Tasks here ................!"
+            #taskInput
+            [formControl]="taskCtrl"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="onCreateTodo()">
+      Create Todo
+    </button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span>ToDo APP</span>
+  <span class="example-spacer"></span>
+  <div class="flex items-center gap-2">
+    <h3>{{userName}}</h3>
+    <button *ngIf="isLoggedIn" (click)="logout()" mat-raised-button color="warn" class="flex items-center gap-2 cursor-pointer"><mat-icon class="mr-2">logout</mat-icon>LogOut</button>
+    <button *ngIf="!isLoggedIn" [routerLink]="'/login'" mat-raised-button  class="flex items-center cursor-pointer"><mat-icon class="mr-2">login</mat-icon>Login</button>
+  </div>
+
+</mat-toolbar>
+<div
+  class="grid overflow-hidden grid-rows-2 items-center md:grid-cols-12 gap-2"
+>
+  <div class="box md:col-span-5">
+    <app-create-todo></app-create-todo>
+  </div>
+  <div class="box md:col-span-7">
+    <app-card></app-card>
+  </div>
+</div>
